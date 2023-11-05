@@ -30,7 +30,9 @@ entries = har["log"]["entries"]
 for entry in entries:
     mimetype = entry["response"]["content"]["mimeType"]
     filename = entry["request"]["url"].split("/")[-1]
-    image64 = entry["response"]["content"]["text"]
+    responseText = entry["response"]["content"].get("text")
+    if not responseText:
+        continue
 
     # Python lets you lookup values against dictionaries using the in keyword
     if mimetype in mimetypes:
@@ -38,4 +40,4 @@ for entry in entries:
         file = os.path.join(folder, f"{filename}.{ext}")
         print(file)
         with open(file, "wb") as f:
-            f.write(base64.b64decode(image64))
+            f.write(base64.b64decode(responseText))
