@@ -8,4 +8,4 @@ by [Kafran](https://github.com/kafran) using the [Python programming language](h
 
 1. Link the HAR file `ln -s sample_data/imgur.har src.har`.
 2. Run the script `python main.py`.
-3. It'll probably crash 😊 but it worked at the time.
+3. No longer crashes for me with sample files.
