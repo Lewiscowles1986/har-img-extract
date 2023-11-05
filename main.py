@@ -42,7 +42,8 @@ for entry in entries:
     # Python lets you lookup values against dictionaries using the in keyword
     if mimetype in mimetypes:
         ext = mimetypes[mimetype]
-        file = os.path.join(folder, f"{filename}{ext}")
+        file = os.path.join(folder, str(path.parent)[1:], f"{filename}{ext}")
+        os.makedirs(os.path.join(folder, str(path.parent)[1:]), exist_ok=True)
         print(file)
         with open(file, "wb") as f:
             f.write(
