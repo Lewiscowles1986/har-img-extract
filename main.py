@@ -1,6 +1,8 @@
 import json
 import base64
 import os
+import pathlib
+from urllib.parse import urlparse
 
 # list of supported image mime-types
 # Special thanks to https://gist.github.com/FurloSK/0477e01024f701db42341fc3223a5d8c
@@ -22,14 +24,16 @@ mimetypes = {
 # make sure the output directory exists before running!
 folder = os.path.join(os.getcwd(), "imgs")
 
-with open("src.har", "r") as f:
+with open("src.har", "rb") as f:
     har = json.loads(f.read())
 
 entries = har["log"]["entries"]
 
 for entry in entries:
     mimetype = entry["response"]["content"]["mimeType"]
-    filename = entry["request"]["url"].split("/")[-1]
+    url = urlparse(entry["request"]["url"])
+    path = pathlib.Path(url.path)
+    filename = path.stem
     response_text = entry["response"]["content"].get("text")
     encoding = entry["response"]["content"].get("encoding", "literal")
     if not response_text:
@@ -38,7 +42,7 @@ for entry in entries:
     # Python lets you lookup values against dictionaries using the in keyword
     if mimetype in mimetypes:
         ext = mimetypes[mimetype]
-        file = os.path.join(folder, f"{filename}.{ext}")
+        file = os.path.join(folder, f"{filename}{ext}")
         print(file)
         with open(file, "wb") as f:
             f.write(
