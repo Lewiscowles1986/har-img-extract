@@ -69,3 +69,16 @@ Among my frustration with wanting to see if there were edge-cases between C and 
 What you have here now is by no means a glorious example of C; but rather an example of me iterating via the compiler and runtime errors; until you get what is here now, that has been tested working, with two sample HAR archives.
 
 It's actually going to lead to an improvement in the original Python Gist fork I maintain, which is... Unexpected.
+
+## Todo
+
+- Add tests
+- build or use an output / logging library for info, error, debug messages
+- test on other OS / processor architecture combinations
+  - x86
+  - ARM
+  - RISCV
+  - windows
+  - Linux
+- Automated builds 
+- Review contributions
