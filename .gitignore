@@ -1,0 +1,9 @@
+out
+har-img-extract
+*.gif
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.out
+.DS_Store
