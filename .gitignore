@@ -5,5 +5,12 @@ har-img-extract
 *.jpg
 *.jpeg
 *.svg
+*.webp
+*.avif
+*.bmp
+*.gif
+*.ico
+*.tif
+*.tiff
 *.out
 .DS_Store

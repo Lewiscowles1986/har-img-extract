@@ -64,7 +64,13 @@ mimetype_t mimetypes[] = {
 	{"image/jpeg", ".jpeg"},
 	{"image/jpeg", ".jpg"},
 	{"image/png", ".png"},
-	{"image/svg+xml", ".svg"}
+	{"image/svg+xml", ".svg"},
+	{"image/avif", ".avif"},
+    {"image/bmp", ".bmp"},
+    {"image/gif", ".gif"},
+    {"image/vnd.microsoft.icon", ".ico"},
+    {"image/tiff", ".tif"},
+    {"image/tiff", ".tiff"}
 };
 
 const char* get_extension_for_mimetype(const char* mimetype) {
