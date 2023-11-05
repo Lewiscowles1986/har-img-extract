@@ -1,0 +1,17 @@
+out
+har-img-extract
+*.gif
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.webp
+*.avif
+*.bmp
+*.gif
+*.ico
+*.tif
+*.tiff
+*.out
+.DS_Store
+*.pyc
