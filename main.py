@@ -30,8 +30,9 @@ entries = har["log"]["entries"]
 for entry in entries:
     mimetype = entry["response"]["content"]["mimeType"]
     filename = entry["request"]["url"].split("/")[-1]
-    responseText = entry["response"]["content"].get("text")
-    if not responseText:
+    response_text = entry["response"]["content"].get("text")
+    encoding = entry["response"]["content"].get("encoding", "literal")
+    if not response_text:
         continue
 
     # Python lets you lookup values against dictionaries using the in keyword
@@ -40,4 +41,8 @@ for entry in entries:
         file = os.path.join(folder, f"{filename}.{ext}")
         print(file)
         with open(file, "wb") as f:
-            f.write(base64.b64decode(responseText))
+            f.write(
+                response_text.encode(encoding = "UTF-8", errors = "strict")
+                if encoding == "literal"
+                else base64.b64decode(response_text)
+            )
